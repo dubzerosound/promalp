@@ -1,0 +1,16 @@
+# Playwright MCP
+.playwright-mcp/
+
+# OS
+.DS_Store
+Thumbs.db
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node
+node_modules/
