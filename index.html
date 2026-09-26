@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Пром-Альп-Строй — Промышленный альпинизм в Ижевске</title>
+<link rel="icon" type="image/png" href="images/favicon.png">
+<meta name="description" content="Высотные работы любой сложности в Ижевске и по Удмуртии. 20 лет опыта, сертифицированные альпинисты, мастера спорта. Выезд на объект, смета, договор.">
+<style>
+  :root{
+    --bg:#0b1220;
+    --bg-soft:#111a2e;
+    --card:#151f38;
+    --accent:#ff6b00;
+    --accent-2:#ffb800;
+    --text:#eaf0ff;
+    --muted:#9aa8c7;
+    --line:rgba(255,255,255,.08);
+    --radius:18px;
+    --shadow:0 20px 50px rgba(0,0,0,.45);
+    --maxw:1180px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter','Segoe UI',system-ui,-apple-system,sans-serif;
+    background:var(--bg);color:var(--text);line-height:1.6;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block;border-radius:12px}
+  a{color:inherit;text-decoration:none}
+  .container{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+  .section{
+    padding:100px 0 100px;
+    position:relative;
+    z-index:1;
+    background:var(--bg);
+  }
+  .section:nth-child(even){
+    background:var(--bg-soft);
+  }
+  /* Overlapping sections effect */
+  .section + .section{
+    margin-top:-60px;
+    padding-top:140px;
+    box-shadow:0 -30px 80px rgba(0,0,0,.4);
+  }
+  .section:first-of-type{
+    padding-top:120px;
+  }
+  /* Parallax background image */
+  .parallax-bg{
+    position:relative;
+    overflow:hidden;
+  }
+  .parallax-bg::before{
+    content:'';position:absolute;top:0;left:0;right:0;bottom:0;
+    background-size:cover;background-position:center;
+    opacity:.12;z-index:0;pointer-events:none;
+    will-change:transform;
+  }
+  .parallax-bg > *{position:relative;z-index:1}
+  .section-title{
+    font-size:clamp(24px,3.5vw,38px);font-weight:800;line-height:1.2;
+    margin-bottom:16px;letter-spacing:-.02em;
+  }
+  .section-sub{color:var(--muted);font-size:17px;max-width:720px;margin-bottom:40px}
+  .accent{color:var(--accent)}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:14px 26px;border-radius:999px;font-weight:700;font-size:16px;
+    border:none;cursor:pointer;transition:.25s;white-space:nowrap;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    color:#111;box-shadow:0 10px 30px rgba(255,107,0,.35);
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(255,107,0,.5)}
+  .btn-ghost{
+    background:transparent;color:var(--text);border:1.5px solid var(--line);
+  }
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+
+  /* HEADER */
+  header{
+    position:sticky;top:0;z-index:100;
+    background:rgba(11,18,32,.85);backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px 0}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:18px;letter-spacing:-.02em}
+  .logo-mark{
+    width:38px;height:38px;border-radius:10px;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    display:grid;place-items:center;color:#111;font-size:20px;font-weight:900;
+  }
+  .nav-links{display:flex;gap:26px;font-size:15px;color:var(--muted)}
+  .nav-links a:hover{color:var(--accent)}
+  .nav-phone{
+    display:flex;align-items:center;gap:8px;font-weight:800;font-size:16px;
+    color:var(--accent);padding:8px 14px;border-radius:999px;
+    border:1px solid rgba(255,107,0,.35);
+  }
+  .nav-phone:hover{background:rgba(255,107,0,.1)}
+  .burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
+  .burger span{width:24px;height:2px;background:var(--text);border-radius:2px;transition:.3s}
+
+  /* MOBILE MENU */
+  .mobile-menu{
+    display:none;flex-direction:column;gap:6px;padding:16px 20px 22px;
+    border-top:1px solid var(--line);background:var(--bg-soft);
+  }
+  .mobile-menu.open{display:flex}
+  .mobile-menu a{padding:12px 0;color:var(--muted);font-size:16px;border-bottom:1px solid var(--line)}
+  .mobile-menu a:hover{color:var(--accent)}
+
+  /* HERO */
+  .hero{
+    position:relative;padding:90px 0 70px;overflow:hidden;
+    background:
+      radial-gradient(900px 500px at 85% -10%, rgba(255,107,0,.18), transparent 60%),
+      radial-gradient(700px 500px at -10% 40%, rgba(255,184,0,.10), transparent 60%);
+  }
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:50px;align-items:center}
+  .badge{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(255,107,0,.12);color:var(--accent);
+    border:1px solid rgba(255,107,0,.3);
+    padding:8px 16px;border-radius:999px;font-size:13px;font-weight:700;
+    margin-bottom:22px;text-transform:uppercase;letter-spacing:.06em;
+  }
+  .hero h1{
+    font-size:clamp(32px,5.2vw,58px);font-weight:900;line-height:1.05;
+    letter-spacing:-.03em;margin-bottom:22px;
+  }
+  .hero p{color:var(--muted);font-size:18px;max-width:560px;margin-bottom:30px}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:34px}
+  .hero-stats{display:flex;gap:34px;flex-wrap:wrap}
+  .hero-stat b{display:block;font-size:30px;font-weight:900;color:var(--accent);line-height:1}
+  .hero-stat span{font-size:13px;color:var(--muted)}
+  .hero-visual{
+    position:relative;border-radius:24px;overflow:hidden;
+    box-shadow:var(--shadow);aspect-ratio:4/5;
+    background:linear-gradient(160deg,#1b2745,#0e1628);
+    border:1px solid var(--line);
+  }
+  .hero-visual img{width:100%;height:100%;object-fit:cover;border-radius:0}
+
+  /* TRUST STRIP */
+  .trust{
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    padding:26px 0;background:var(--bg-soft);
+  }
+  .trust-inner{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;text-align:center}
+  .trust-item{flex:1;min-width:150px}
+  .trust-item b{display:block;font-size:26px;font-weight:900}
+  .trust-item span{font-size:13px;color:var(--muted)}
+
+  /* BENEFITS */
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:30px;transition:.3s;position:relative;overflow:hidden;
+  }
+  .card:hover{transform:translateY(-6px);border-color:rgba(255,107,0,.4);box-shadow:var(--shadow)}
+  .card-icon{
+    width:52px;height:52px;border-radius:14px;display:grid;place-items:center;
+    background:rgba(255,107,0,.12);color:var(--accent);font-size:24px;margin-bottom:20px;
+  }
+  .card h3{font-size:19px;font-weight:800;margin-bottom:12px}
+  .card p{color:var(--muted);font-size:15px}
+
+  /* STEPS */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;counter-reset:step}
+  .step{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:34px 28px;position:relative;
+  }
+  .step::before{
+    counter-increment:step;content:counter(step,decimal-leading-zero);
+    position:absolute;top:-18px;left:28px;
+    font-size:44px;font-weight:900;color:rgba(255,107,0,.25);line-height:1;
+  }
+  .step h3{font-size:19px;font-weight:800;margin:14px 0 10px}
+  .step p{color:var(--muted);font-size:15px}
+
+  /* SERVICES */
+  .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+  .service{
+    background:var(--card);border:1px solid var(--line);border-radius:16px;
+    padding:24px;display:flex;gap:16px;align-items:flex-start;transition:.25s;
+  }
+  .service:hover{border-color:rgba(255,107,0,.4);background:#18233f}
+  .service-emoji{font-size:26px;flex-shrink:0}
+  .service h4{font-size:16px;font-weight:700;margin-bottom:6px}
+  .service p{font-size:14px;color:var(--muted)}
+
+  /* GALLERY */
+  .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+  .gallery-item{
+    position:relative;aspect-ratio:4/3;border-radius:14px;overflow:hidden;
+    background:linear-gradient(160deg,#1b2745,#0e1628);border:1px solid var(--line);
+    cursor:pointer;transition:.3s;
+  }
+  .gallery-item:hover{transform:scale(1.02);border-color:var(--accent)}
+  .gallery-item img{width:100%;height:100%;object-fit:cover;border-radius:0}
+  .gallery-item .caption{
+    position:absolute;inset:auto 0 0 0;padding:14px;
+    background:linear-gradient(to top,rgba(0,0,0,.85),transparent);
+    font-size:13px;color:#fff;font-weight:600;
+  }
+
+  /* TEAM */
+  .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px}
+  .team-card{
+    background:var(--card);border:1px solid var(--line);border-radius:16px;
+    padding:24px;text-align:center;
+  }
+  .team-photo{
+    width:96px;height:96px;border-radius:50%;margin:0 auto 16px;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    display:grid;place-items:center;font-size:36px;color:#111;
+  }
+  .team-card h4{font-size:17px;font-weight:800;margin-bottom:6px}
+  .team-card p{font-size:14px;color:var(--muted)}
+
+  /* REVIEWS */
+  .reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px}
+  .review{
+    background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px;
+  }
+  .review-stars{color:var(--accent-2);font-size:16px;margin-bottom:12px}
+  .review p{font-size:15px;color:var(--muted);margin-bottom:16px;font-style:italic}
+  .review-author{display:flex;align-items:center;gap:12px}
+  .review-avatar{
+    width:42px;height:42px;border-radius:50%;
+    background:rgba(255,107,0,.15);display:grid;place-items:center;
+    color:var(--accent);font-weight:800;
+  }
+  .review-author b{display:block;font-size:14px}
+  .review-author span{font-size:12px;color:var(--muted)}
+
+  /* FAQ */
+  .faq-list{display:flex;flex-direction:column;gap:12px;max-width:860px;margin:0 auto}
+  .faq-item{
+    background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;
+  }
+  .faq-q{
+    width:100%;background:none;border:none;color:var(--text);
+    padding:20px 24px;font-size:16px;font-weight:700;text-align:left;
+    cursor:pointer;display:flex;justify-content:space-between;gap:16px;align-items:center;
+  }
+  .faq-q::after{content:'+';font-size:24px;color:var(--accent);transition:.3s;flex-shrink:0}
+  .faq-item.open .faq-q::after{transform:rotate(45deg)}
+  .faq-a{
+    max-height:0;overflow:hidden;transition:max-height .35s ease;
+    padding:0 24px;color:var(--muted);font-size:15px;
+  }
+  .faq-item.open .faq-a{max-height:400px;padding-bottom:22px}
+
+  /* CTA / FORM */
+  .cta{
+    background:
+      radial-gradient(700px 400px at 80% 0%, rgba(255,107,0,.22), transparent 60%),
+      linear-gradient(160deg,#151f38,#0d1526);
+    border:1px solid var(--line);border-radius:26px;
+    padding:clamp(30px,5vw,60px);display:grid;grid-template-columns:1fr 1fr;gap:50px;
+    align-items:center;
+  }
+  .cta h2{font-size:clamp(24px,3.5vw,36px);font-weight:900;line-height:1.15;margin-bottom:16px}
+  .cta p{color:var(--muted);font-size:16px;margin-bottom:24px}
+  .cta-contacts{display:flex;flex-direction:column;gap:12px}
+  .cta-contact{display:flex;align-items:center;gap:12px;font-size:16px}
+  .cta-contact a{font-weight:700;color:var(--accent)}
+  .cta-contact a:hover{text-decoration:underline}
+
+  .form{
+    background:rgba(11,18,32,.6);border:1px solid var(--line);border-radius:20px;
+    padding:30px;
+  }
+  .form h3{font-size:20px;font-weight:800;margin-bottom:6px}
+  .form-sub{font-size:14px;color:var(--muted);margin-bottom:22px}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px;font-weight:600}
+  .field input,.field textarea,.field select{
+    width:100%;padding:13px 16px;border-radius:12px;
+    background:var(--bg-soft);border:1px solid var(--line);color:var(--text);
+    font-size:15px;font-family:inherit;transition:.2s;
+  }
+  .field input:focus,.field textarea:focus,.field select:focus{
+    outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(255,107,0,.15);
+  }
+  .field textarea{resize:vertical;min-height:90px}
+  .form .btn{width:100%;justify-content:center;margin-top:6px}
+  .form-note{font-size:12px;color:var(--muted);text-align:center;margin-top:14px}
+
+  /* FOOTER */
+  footer{border-top:1px solid var(--line);padding:50px 0 30px;background:var(--bg-soft)}
+  .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.4fr;gap:40px;margin-bottom:40px}
+  .footer-col h4{font-size:15px;font-weight:800;margin-bottom:16px}
+  .footer-col a,.footer-col p{display:block;color:var(--muted);font-size:14px;margin-bottom:10px}
+  .footer-col a:hover{color:var(--accent)}
+  .footer-bottom{
+    border-top:1px solid var(--line);padding-top:24px;
+    display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+    font-size:13px;color:var(--muted);
+  }
+
+  /* FLOATING CALL BUTTON */
+  .float-call{
+    position:fixed;bottom:22px;right:22px;z-index:200;
+    width:62px;height:62px;border-radius:50%;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    display:grid;place-items:center;color:#111;font-size:26px;
+    box-shadow:0 12px 34px rgba(255,107,0,.55);
+    animation:pulse 2.2s infinite;transition:.25s;
+  }
+  .float-call:hover{transform:scale(1.08)}
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(255,107,0,.55)}
+    70%{box-shadow:0 0 0 20px rgba(255,107,0,0)}
+    100%{box-shadow:0 0 0 0 rgba(255,107,0,0)}
+  }
+
+  /* STICKY MOBILE BAR */
+  .mobile-bar{display:none}
+
+  /* ANIMATIONS */
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.visible{opacity:1;transform:none}
+
+  /* PHOTO DYNAMIC EFFECTS */
+  .gallery-item img,.hero-visual img,.team-photo img,.service-emoji + div img{
+    transition:transform .5s cubic-bezier(.25,.46,.45,.94),box-shadow .5s ease;
+    will-change:transform;
+  }
+  .gallery-item:hover img{
+    transform:scale(1.08) rotate(1deg);
+    box-shadow:0 20px 60px rgba(255,107,0,.3);
+  }
+  .hero-visual img{
+    animation:float 6s ease-in-out infinite;
+  }
+  @keyframes float{
+    0%,100%{transform:translateY(0) scale(1.02)}
+    50%{transform:translateY(-12px) scale(1.03)}
+  }
+  .team-photo{
+    position:relative;overflow:hidden;
+    border:3px solid rgba(255,107,0,.3);
+    transition:border-color .3s,box-shadow .3s;
+  }
+  .team-photo::before{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(135deg,rgba(255,107,0,.15),transparent);
+    opacity:0;transition:opacity .4s;z-index:1;
+  }
+  .team-card:hover .team-photo{
+    border-color:var(--accent);
+    box-shadow:0 10px 40px rgba(255,107,0,.3);
+  }
+  .team-card:hover .team-photo::before{opacity:1}
+  .team-card:hover .team-photo img{
+    transform:scale(1.15);
+    transition:transform .6s cubic-bezier(.25,.46,.45,.94);
+  }
+  .service:hover .service-emoji{
+    animation:bounce .6s ease;
+  }
+  @keyframes bounce{
+    0%,100%{transform:translateY(0)}
+    40%{transform:translateY(-8px)}
+    60%{transform:translateY(-4px)}
+  }
+  .review img{
+    transition:transform .4s ease,filter .4s ease;
+  }
+  .review:hover img{
+    transform:scale(1.05);
+    filter:brightness(1.1);
+  }
+
+  /* PARALLAX EFFECT */
+  .parallax-bg{
+    position:relative;overflow:hidden;
+  }
+  .parallax-bg::before{
+    content:'';position:absolute;top:-20%;left:0;right:0;bottom:-20%;
+    background-size:cover;background-position:center;
+    opacity:.08;z-index:0;pointer-events:none;
+    will-change:transform;transition:transform .1s linear;
+  }
+  .parallax-1::before{
+    background-image:url('images/bg1.jpg');
+    transform:translateZ(0);
+  }
+  .parallax-2::before{
+    background-image:url('images/hero1.jpg');
+    transform:translateZ(0);
+  }
+  .parallax-bg > *{position:relative;z-index:1}
+
+  /* SCROLL ANIMATIONS */
+  .slide-left{
+    opacity:0;transform:translateX(-60px);
+    transition:opacity .8s ease,transform .8s ease;
+  }
+  .slide-right{
+    opacity:0;transform:translateX(60px);
+    transition:opacity .8s ease,transform .8s ease;
+  }
+  .slide-left.visible,.slide-right.visible{
+    opacity:1;transform:translateX(0);
+  }
+  .zoom-in{
+    opacity:0;transform:scale(.85);
+    transition:opacity .7s ease,transform .7s ease;
+  }
+  .zoom-in.visible{
+    opacity:1;transform:scale(1);
+  }
+
+  /* TEAM 3-COLUMN GRID */
+  .team-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1000px;margin:0 auto}
+  .team-card-3{
+    background:var(--card);border:1px solid var(--line);border-radius:16px;
+    padding:20px;text-align:center;transition:.3s;
+  }
+  .team-card-3:hover{
+    transform:translateY(-8px);
+    border-color:rgba(255,107,0,.4);
+    box-shadow:0 20px 50px rgba(255,107,0,.2);
+  }
+  .team-photo-3{
+    width:100%;aspect-ratio:3/4;border-radius:12px;overflow:hidden;
+    margin-bottom:16px;cursor:zoom-in;transition:.3s;
+  }
+  .team-photo-3 img{
+    width:100%;height:100%;object-fit:cover;
+    transition:transform .4s ease;
+  }
+  .team-card-3:hover .team-photo-3 img{
+    transform:scale(1.05);
+  }
+  .team-card-3 h4{font-size:17px;font-weight:800;margin-bottom:8px}
+  .team-card-3 p{font-size:14px;color:var(--muted);line-height:1.5}
+  /* Center last row when 5 items (3+2) */
+  .team-grid-3{
+    justify-items:center;
+  }
+  .team-grid-3 .team-card-3:nth-child(4){
+    grid-column:1/2;
+  }
+  .team-grid-3 .team-card-3:nth-child(5){
+    grid-column:2/3;
+  }
+
+  /* MODAL LIGHTBOX */
+  .modal-overlay{
+    position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:1000;
+    display:none;justify-content:center;align-items:center;
+    cursor:zoom-out;backdrop-filter:blur(10px);
+  }
+  .modal-overlay.active{display:flex}
+  .modal-content{
+    max-width:90vw;max-height:90vh;position:relative;
+    animation:modalIn .3s ease;
+  }
+  .modal-content img{
+    max-width:90vw;max-height:85vh;object-fit:contain;
+    border-radius:12px;box-shadow:0 30px 80px rgba(0,0,0,.6);
+  }
+  .modal-close{
+    position:absolute;top:-40px;right:0;background:none;border:none;
+    color:#fff;font-size:32px;cursor:pointer;transition:.3s;
+    width:40px;height:40px;display:grid;place-items:center;
+  }
+  .modal-close:hover{color:var(--accent);transform:rotate(90deg)}
+  .modal-caption{
+    text-align:center;color:#fff;margin-top:16px;font-size:16px;
+    font-weight:600;
+  }
+  .modal-nav{
+    position:absolute;top:50%;transform:translateY(-50%);
+    background:rgba(255,255,255,.1);border:none;color:#fff;
+    width:50px;height:50px;border-radius:50%;cursor:pointer;
+    font-size:24px;transition:.3s;display:grid;place-items:center;
+  }
+  .modal-nav:hover{background:var(--accent);color:#111}
+  .modal-prev{left:-70px}
+  .modal-next{right:-70px}
+  @keyframes modalIn{
+    from{opacity:0;transform:scale(.9)}
+    to{opacity:1;transform:scale(1)}
+  }
+
+  /* TEAM CAROUSEL */
+  .team-carousel{
+    position:relative;overflow:hidden;
+  }
+  .team-carousel-track{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:30px;
+    transition:transform .5s cubic-bezier(.25,.46,.45,.94);
+  }
+  .team-carousel-slide{
+    opacity:0;transform:translateX(50px);
+    transition:opacity .6s ease,transform .6s ease;
+  }
+  .team-carousel-slide.active{
+    opacity:1;transform:translateX(0);
+  }
+  .team-carousel-slide img{
+    width:100%;aspect-ratio:3/4;object-fit:cover;
+    border-radius:20px;border:3px solid rgba(255,107,0,.3);
+    cursor:zoom-in;transition:.4s;
+  }
+  .team-carousel-slide img:hover{
+    border-color:var(--accent);
+    box-shadow:0 20px 60px rgba(255,107,0,.3);
+    transform:scale(1.02);
+  }
+  .team-carousel-info{
+    text-align:center;margin-top:20px;
+  }
+  .team-carousel-info h4{
+    font-size:20px;font-weight:800;margin-bottom:8px;
+  }
+  .team-carousel-info p{
+    color:var(--muted);font-size:15px;
+  }
+  .team-carousel-controls{
+    display:flex;justify-content:center;gap:16px;margin-top:30px;
+  }
+  .carousel-btn{
+    width:50px;height:50px;border-radius:50%;
+    background:var(--card);border:2px solid var(--line);
+    color:var(--text);font-size:20px;cursor:pointer;
+    transition:.3s;display:grid;place-items:center;
+  }
+  .carousel-btn:hover{
+    border-color:var(--accent);color:var(--accent);
+    transform:scale(1.1);
+  }
+  .carousel-dots{
+    display:flex;justify-content:center;gap:10px;margin-top:20px;
+  }
+  .carousel-dot{
+    width:10px;height:10px;border-radius:50%;
+    background:var(--line);cursor:pointer;transition:.3s;
+  }
+  .carousel-dot.active{
+    background:var(--accent);transform:scale(1.3);
+  }
+
+  /* RESPONSIVE */
+  @media(max-width:960px){
+    .hero-grid{grid-template-columns:1fr;gap:40px}
+    .hero-visual{aspect-ratio:16/10;order:-1}
+    .grid-3,.steps{grid-template-columns:1fr}
+    .cta{grid-template-columns:1fr;gap:36px}
+    .footer-grid{grid-template-columns:1fr 1fr;gap:30px}
+    .nav-links{display:none}
+    .nav-phone{display:none}
+    .burger{display:flex}
+  }
+  @media(max-width:600px){
+    .section{padding:60px 0}
+    .section + .section{margin-top:-30px;padding-top:80px;box-shadow:0 -20px 60px rgba(0,0,0,.3)}
+    .hero{padding:50px 0 40px}
+    .hero-stats{gap:20px}
+    .hero-stat b{font-size:24px}
+    .footer-grid{grid-template-columns:1fr}
+    .float-call{bottom:84px;width:56px;height:56px;font-size:22px}
+    .team-grid-3{grid-template-columns:1fr}
+    .mobile-bar{
+      display:grid;grid-template-columns:1fr 1fr;gap:10px;
+      position:fixed;bottom:0;left:0;right:0;z-index:150;
+      padding:12px 16px;background:rgba(11,18,32,.95);
+      backdrop-filter:blur(14px);border-top:1px solid var(--line);
+    }
+    .mobile-bar .btn{padding:12px;font-size:15px;justify-content:center}
+    body{padding-bottom:76px}
+  }
+
+  /* MODAL RESPONSIVE */
+  @media(max-width:768px){
+    .modal-prev{left:10px}
+    .modal-next{right:10px}
+    .modal-close{top:10px;right:10px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+  <div class="container nav">
+    <a href="#" class="logo">
+      <img src="images/favicon.png" alt="Пром-Альп-Строй" style="height:38px;border-radius:10px;">
+      <span>Пром-Альп-Строй</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#benefits">Почему мы</a>
+      <a href="#services">Услуги</a>
+      <a href="#works">Работы</a>
+      <a href="#details">Подробнее</a>
+      <a href="#team">Команда</a>
+      <a href="#certificates">Сертификаты</a>
+      <a href="#reviews">Отзывы</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Контакты</a>
+    </nav>
+    <a href="tel:+73412000000" class="nav-phone">
+      📞 +7 (3412) 00-00-00
+    </a>
+    <button class="burger" id="burger" aria-label="Меню">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#benefits">Почему мы</a>
+    <a href="#services">Услуги</a>
+    <a href="#works">Работы</a>
+    <a href="#details">Подробнее</a>
+    <a href="#team">Команда</a>
+    <a href="#certificates">Сертификаты</a>
+    <a href="#reviews">Отзывы</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Контакты</a>
+    <a href="tel:+73412000000" style="color:var(--accent);font-weight:800;">📞 +7 (3412) 00-00-00</a>
+  </div>
+</header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="badge">🏔 20 лет на высоте · Ижевск и Удмуртия</div>
+      <h1>Промышленный альпинизм <span class="accent">любой сложности</span></h1>
+      <p>Высотные работы на строительных сооружениях в безопорном пространстве. Сертифицированная команда, мастера спорта, выезд на объект и смета — уже на следующий день после обращения.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">📝 Оставить заявку</a>
+        <a href="tel:+73412000000" class="btn btn-ghost">📞 Позвонить сейчас</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><b>20</b><span>лет опыта</span></div>
+        <div class="hero-stat"><b>6+</b><span>лет опыта у каждого альпиниста</span></div>
+        <div class="hero-stat"><b>2</b><span>мастера спорта</span></div>
+        <div class="hero-stat"><b>4</b><span>КМС в команде</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <img src="images/hero1.jpg" alt="Промышленный альпинист за работой">
+    </div>
+  </div>
+</section>
+
+<!-- ===== TRUST STRIP ===== -->
+<div class="trust">
+  <div class="container trust-inner">
+    <div class="trust-item"><b>98%</b><span>клиентов рекомендуют нас</span></div>
+    <div class="trust-item"><b>100%</b><span>сертифицированные сотрудники</span></div>
+    <div class="trust-item"><b>24 ч</b><span>до начала работ</span></div>
+    <div class="trust-item"><b>0 ₽</b><span>за аренду оборудования</span></div>
+  </div>
+</div>
+
+<!-- ===== BENEFITS ===== -->
+<section class="section" id="benefits">
+  <div class="container">
+    <h2 class="section-title">Почему клиенты выбирают <span class="accent">нас</span></h2>
+    <p class="section-sub">Для наших заказчиков важно, чтобы компания, выполняющая опасные высотные работы, была надёжной и высококвалифицированной.</p>
+    <div class="grid-3">
+      <div class="card reveal slide-left">
+        <div class="card-icon">🏅</div>
+        <h3>Профессиональный состав команды</h3>
+        <p>Все действующие альпинисты — профессионалы с опытом не менее 6 лет. Пройдена сертификация. В составе команды 2 мастера спорта и 4 кандидата в мастера спорта.</p>
+      </div>
+      <div class="card reveal zoom-in">
+        <div class="card-icon">💰</div>
+        <h3>Экономия средств заказчика</h3>
+        <p>Для начала работ не нужно закупать оборудование (леса, лебёдки, люльки). Наличие профессиональной команды позволяет воспользоваться услугой уже на следующий день после обращения. Всё оборудование и транспорт — в наличии.</p>
+      </div>
+      <div class="card reveal slide-right">
+        <div class="card-icon">📈</div>
+        <h3>Богатый опыт и широкий спектр услуг</h3>
+        <p>За 20 лет работы мы получили колоссальный опыт, который успешно помогает нам решать задачи любой сложности — от подъёма мебели до монтажа телекоммуникационного оборудования на телевышку.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STEPS ===== -->
+<section class="section" style="background:var(--bg-soft);">
+  <div class="container">
+    <h2 class="section-title">Промышленный альпинизм — <span class="accent">опасный вид деятельности</span></h2>
+    <p class="section-sub">Поэтому мы проводим обязательные 3 шага перед началом работ.</p>
+    <div class="steps">
+      <div class="step reveal">
+        <h3>Оставить заявку</h3>
+        <p>Позвоните или заполните форму на сайте. Мы свяжемся с вами в течение 15 минут.</p>
+      </div>
+      <div class="step reveal">
+        <h3>Осмотр объекта</h3>
+        <p>Выезжаем на место, оцениваем объём работ и составляем предварительную смету.</p>
+      </div>
+      <div class="step reveal">
+        <h3>Подписать договор</h3>
+        <p>Согласовываем смету, подписываем договор и приступаем к работе.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section class="section" id="services">
+  <div class="container">
+    <h2 class="section-title">Услуги <span class="accent">нашей компании</span></h2>
+    <p class="section-sub">В таблице приведены популярные услуги. Если вы не смогли найти то, что необходимо именно вам, — позвоните в нашу компанию, и мы найдём решение вашей задачи.</p>
+    <div class="services-grid">
+      <div class="service reveal">
+        <div class="service-emoji">🏢</div>
+        <div><h4>Высотные работы на фасадах</h4><p>Мойка, покраска, герметизация, ремонт фасадов зданий любой высоты. Очистка кровли от снега, покраска дымовых труб, герметизация межпанельных швов, любые демонтажные работы. Удобно, быстро, доступно.</p></div>
+      </div>
+      <div class="service reveal">
+        <div class="service-emoji">📡</div>
+        <div><h4>Монтаж телекоммуникационного оборудования</h4><p>Установка антенн, вышек, монтаж на телевышках. Установка и крепление баннеров, фальшфасадов, водосточных и воздуховодных систем.</p></div>
+      </div>
+      <div class="service reveal">
+        <div class="service-emoji">📦</div>
+        <div><h4>Подъём грузов на высоту</h4><p>Подъём мебели, оборудования, стройматериалов, не проходящих в лестничный пролёт. Работы как для частных, так и для юридических лиц.</p></div>
+      </div>
+      <div class="service reveal">
+        <div class="service-emoji">🌨</div>
+        <div><h4>Удаление снега и наледи</h4><p>Очистка кровли и водостоков от снега, сосулек и наледи. Зимнее абонентское обслуживание кровли. Вывоз снега с погрузкой в контейнер.</p></div>
+      </div>
+      <div class="service reveal">
+        <div class="service-emoji">🔧</div>
+        <div><h4>Ремонт и обслуживание кровли</h4><p>Устранение протечек, ремонт мягкой и жёсткой кровли. Работы с мягкой черепицей, металлической черепицей, фальцевой кровлей, плоской кровлей. Обслуживаем муниципальные здания и коттеджи.</p></div>
+      </div>
+      <div class="service reveal">
+        <div class="service-emoji">🪟</div>
+        <div><h4>Мойка окон и остекления</h4><p>Профессиональная мойка витражей, окон и светопрозрачных конструкций. Мытье фасадов, рекламы и вывесок. Уборка территории.</p></div>
+      </div>
+      <div class="service reveal">
+        <div class="service-emoji">🎨</div>
+        <div><h4>Малярные и отделочные работы</h4><p>Покраска, штукатурка, отделка на высоте. Покраска металлоконструкций цехов, резервуаров, мачт освещения, вышек сотовой связи, ЛЭП. Грунтование и покрытие краской.</p></div>
+      </div>
+      <div class="service reveal">
+        <div class="service-emoji">🌳</div>
+        <div><h4>Спил и обрезка деревьев</h4><p>Валка деревьев в стеснённых условиях, обрезка сухих ветвей. Спил аварийных деревьев на любой высоте.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DETAILED WORKS ===== -->
+<section class="section" style="background:var(--bg-soft);">
+  <div class="container">
+    <h2 class="section-title">Подробнее о <span class="accent">наших работах</span></h2>
+    <p class="section-sub">Промышленный альпинизм используется в любых работах на высоте. Это удобно, быстро, доступно и обходится дешевле, чем использование автовышек, люлек или строительных лесов.</p>
+    <div class="grid-3">
+      <div class="card reveal slide-left">
+        <div class="card-icon">⚡</div>
+        <h3>Сварочные работы на высоте</h3>
+        <p>Ремонт пожарной лестницы, различных заграждений и другие сварочные работы проводятся исключительно альпинистами-сварщиками. Квалифицированные специалисты выполняют работу быстро и профессионально.</p>
+      </div>
+      <div class="card reveal zoom-in">
+        <div class="card-icon">🏗️</div>
+        <h3>Ремонт и покраска металлоконструкций</h3>
+        <p>Ремонтные работы по металлическим конструкциям, заборам, пожарным лестницам, кровельным ограждениям. Подготовка поверхности, грунтование, покрытие краской. Ежегодная диагностика и окраска для защиты от ржавчины.</p>
+      </div>
+      <div class="card reveal slide-right">
+        <div class="card-icon">🔩</div>
+        <h3>Герметизация швов и кровли</h3>
+        <p>Герметизация межпанельных швов, кровли, лоджий и балконов. Особо тщательно герметизируем швы на 1-м и последнем этажах из-за особенностей вентиляции и отвода воды. Устранение протечек и защита от разрушения фасада.</p>
+      </div>
+      <div class="card reveal slide-left">
+        <div class="card-icon">🏠</div>
+        <h3>Обслуживание зданий и сооружений</h3>
+        <p>Комплексное обслуживание высотных зданий: уборка снега с крыши, мытье фасадов и окон, мониторинг и обследование фасадов и кровли. Работы по технологии «Теплый фасад» — утепление панелей.</p>
+      </div>
+      <div class="card reveal zoom-in">
+        <div class="card-icon">🚧</div>
+        <h3>Демонтажные работы</h3>
+        <p>Демонтаж рекламы, заводских труб высотой до 63 метров, снос кирпичных труб, демонтаж строений и вывоз мусора. Работаем на любой высоте в Ижевске и других городах России.</p>
+      </div>
+      <div class="card reveal slide-right">
+        <div class="card-icon">🎯</div>
+        <h3>Баннерные конструкции</h3>
+        <p>Монтаж баннеров в помещении и на фасадах, установка защитной сетки, фальшфасады. Крепление баннеров, вывесок и рекламы промышленными альпинистами.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WORKS / GALLERY ===== -->
+<section class="section" id="works" style="background:var(--bg-soft);">
+  <div class="container">
+    <h2 class="section-title">Примеры <span class="accent">работ</span></h2>
+    <p class="section-sub">Работы, выполненные компанией ООО «Пром-Альп-Строй».</p>
+    <div class="gallery-grid">
+      <div class="gallery-item reveal"><img src="images/service1.jpg" alt="Высотные работы"><div class="caption">Высотные работы</div></div>
+      <div class="gallery-item reveal"><img src="images/service5.jpg" alt="Монтаж оборудования"><div class="caption">Монтаж оборудования</div></div>
+      <div class="gallery-item reveal"><img src="images/service4.jpg" alt="Ремонт фасада"><div class="caption">Ремонт фасада</div></div>
+      <div class="gallery-item reveal"><img src="images/service3.jpg" alt="Мойка остекления"><div class="caption">Мойка остекления</div></div>
+      <div class="gallery-item reveal"><img src="images/service2.jpg" alt="Удаление наледи"><div class="caption">Удаление наледи</div></div>
+      <div class="gallery-item reveal"><img src="images/service6.jpg" alt="Подъём груза"><div class="caption">Подъём груза</div></div>
+      <div class="gallery-item reveal"><img src="images/hero3.jpg" alt="Отделочные работы"><div class="caption">Отделочные работы</div></div>
+      <div class="gallery-item reveal"><img src="images/hero2.jpg" alt="Спил деревьев"><div class="caption">Спил деревьев</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TEAM ===== -->
+<section class="section" id="team">
+  <div class="container">
+    <h2 class="section-title">Промышленный <span class="accent">альпинист!</span></h2>
+    <p class="section-sub">Предлагаем вам познакомиться с нашей профессиональной командой. Все действующие альпинисты — профессионалы с опытом работы не менее 6 лет, с сертификацией. В составе команды 2 мастера спорта и 4 кандидата в мастера спорта.</p>
+    <div class="team-grid-3">
+      <div class="team-card-3 reveal">
+        <div class="team-photo-3">
+          <img src="images/team_alpin11.jpg" alt="Мастер спорта" onclick="openModal(this.src, 'Мастер спорта — руководитель проектов')">
+        </div>
+        <h4>Мастер спорта</h4>
+        <p>Опыт работы более 15 лет. Руководитель высотных проектов.</p>
+      </div>
+      <div class="team-card-3 reveal">
+        <div class="team-photo-3">
+          <img src="images/team_alpin22.jpg" alt="Мастер спорта" onclick="openModal(this.src, 'Мастер спорта — монтаж')">
+        </div>
+        <h4>Мастер спорта</h4>
+        <p>Специалист по сложным монтажным работам на высоте.</p>
+      </div>
+      <div class="team-card-3 reveal">
+        <div class="team-photo-3">
+          <img src="images/team_alpin33.jpg" alt="КМС" onclick="openModal(this.src, 'КМС — фасадные работы')">
+        </div>
+        <h4>КМС</h4>
+        <p>Опыт работы более 10 лет. Специалист по фасадным работам.</p>
+      </div>
+      <div class="team-card-3 reveal">
+        <div class="team-photo-3">
+          <img src="images/team_alpin44.jpg" alt="КМС" onclick="openModal(this.src, 'КМС — промышленный альпинизм')">
+        </div>
+        <h4>КМС</h4>
+        <p>Опыт работы более 8 лет. Специалист по промышленному альпинизму.</p>
+      </div>
+      <div class="team-card-3 reveal">
+        <div class="team-photo-3">
+          <img src="images/team_alpin66.jpg" alt="КМС" onclick="openModal(this.src, 'КМС — высотные работы')">
+        </div>
+        <h4>КМС</h4>
+        <p>Опыт работы более 6 лет. Специалист по высотным работам.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CERTIFICATES / THANK YOU LETTERS ===== -->
+<section class="section" style="background:var(--bg-soft);">
+  <div class="container">
+    <h2 class="section-title">Благодарственные <span class="accent">письма и сертификаты</span></h2>
+    <p class="section-sub">Наши клиенты высоко оценивают качество работы. Подтверждение нашей квалификации — сертификаты и благодарственные письма от партнёров.</p>
+    <div class="gallery-grid">
+      <div class="gallery-item reveal">
+        <img src="images/cert1.jpg" alt="Благодарственное письмо 1">
+        <div class="caption">Благодарственное письмо</div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="images/cert2.jpg" alt="Благодарственное письмо 2">
+        <div class="caption">Благодарственное письмо</div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="images/cert3.jpg" alt="Благодарственное письмо 3">
+        <div class="caption">Благодарственное письмо</div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="images/cert4.jpg" alt="Благодарственное письмо 4">
+        <div class="caption">Благодарственное письмо</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== REVIEWS ===== -->
+<section class="section" id="reviews" style="background:var(--bg-soft);">
+  <div class="container">
+    <h2 class="section-title">Отзывы <span class="accent">наших клиентов</span></h2>
+    <p class="section-sub">Посмотрите на некоторые отзывы о выполненных работах от наших клиентов. Нас рекомендуют.</p>
+    <div class="reviews-grid">
+      <div class="review reveal">
+        <div class="review-stars">★★★★★</div>
+        <p>«Отличная работа! Быстро, качественно, профессионально. Ребята настоящие профессионалы своего дела. Рекомендую!»</p>
+        <div class="review-author">
+          <div class="review-avatar">А</div>
+          <div><b>Александр</b><span>Управляющая компания</span></div>
+        </div>
+      </div>
+      <div class="review reveal">
+        <div class="review-stars">★★★★★</div>
+        <p>«Заказывали мойку фасада и остекления. Всё сделали в срок, аккуратно. Цена приятно удивила. Будем сотрудничать ещё.»</p>
+        <div class="review-author">
+          <div class="review-avatar">Е</div>
+          <div><b>Елена</b><span>Бизнес-центр</span></div>
+        </div>
+      </div>
+      <div class="review reveal">
+        <div class="review-stars">★★★★★</div>
+        <p>«Поднимали дорогое телекоммуникационное оборудование на телевышку. Работа сложная, но выполнена безупречно. Спасибо!»</p>
+        <div class="review-author">
+          <div class="review-avatar">Д</div>
+          <div><b>Дмитрий</b><span>Телеком-оператор</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="section" id="faq">
+  <div class="container">
+    <h2 class="section-title" style="text-align:center">Часто задаваемые <span class="accent">вопросы</span></h2>
+    <p class="section-sub" style="text-align:center;margin-left:auto;margin-right:auto">FAQ — ответы на популярные вопросы о промышленном альпинизме.</p>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">Что такое промышленный альпинизм?</button>
+        <div class="faq-a"><p>Промышленный альпинизм — специальная технология выполнения высотных работ на строительных сооружениях в безопорном пространстве.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Работаете ли вы с частными лицами?</button>
+        <div class="faq-a"><p>Да, конечно. Работы по подъёму груза на высоту производятся как для частных, так и для юридических лиц. Мы поднимали и мебель, которая не проходит в лестничный пролёт, и дорогое телекоммуникационное оборудование на телевышку.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Как происходит оплата?</button>
+        <div class="faq-a"><p>Мы работаем с НДС, оплата производится в режиме безналичного расчёта. После вашего обращения и выезда на место мы составляем предварительную смету, на основании которой вы принимаете взвешенное решение. После чего мы предлагаем вам стандартный проект договора, вы его подписываете, и мы начинаем взаимовыгодное сотрудничество.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Выезжаете ли вы за пределы Удмуртии?</button>
+        <div class="faq-a"><p>Да, наша компания с 2009 года ежегодно выезжает за пределы Удмуртской Республики для проведения специализированных работ.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Работаете ли вы как генподрядчик?</button>
+        <div class="faq-a"><p>Мы готовы работать в партнёрстве, на уровне генерального подрядчика. Также мы готовы рассматривать другие виды сотрудничества. Звоните — давайте встретимся и обсудим.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA / FORM ===== -->
+<section class="section" id="contact">
+  <div class="container">
+    <div class="cta">
+      <div>
+        <h2>Оставьте заявку — <span class="accent">рассчитаем стоимость</span> уже сегодня</h2>
+        <p>Заполните форму, и мы свяжемся с вами в течение 15 минут. Или позвоните нам напрямую — ответим на все вопросы и выедем на объект.</p>
+        <div class="cta-contacts">
+          <div class="cta-contact">📞 <a href="tel:+73412000000">+7 (3412) 00-00-00</a></div>
+          <div class="cta-contact">📱 <a href="tel:+79000000000">+7 (900) 000-00-00</a></div>
+          <div class="cta-contact">✉️ <a href="mailto:info@udmpromalp.ru">info@udmpromalp.ru</a></div>
+          <div class="cta-contact">📍 <span>г. Ижевск, Удмуртская Республика</span></div>
+        </div>
+      </div>
+      <form class="form" id="leadForm" onsubmit="return handleSubmit(event)">
+        <h3>Заявка на расчёт</h3>
+        <p class="form-sub">Оставьте контакты — перезвоним в течение 15 минут</p>
+        <div class="field">
+          <label for="name">Ваше имя *</label>
+          <input type="text" id="name" name="name" required placeholder="Иван Иванович">
+        </div>
+        <div class="field">
+          <label for="phone">Телефон *</label>
+          <input type="tel" id="phone" name="phone" required placeholder="+7 (___) ___-__-__">
+        </div>
+        <div class="field">
+          <label for="service">Услуга</label>
+          <select id="service" name="service">
+            <option value="">Выберите услугу</option>
+            <option>Высотные работы на фасадах</option>
+            <option>Монтаж телекоммуникационного оборудования</option>
+            <option>Подъём грузов на высоту</option>
+            <option>Удаление снега и наледи</option>
+            <option>Ремонт и обслуживание кровли</option>
+            <option>Мойка окон и остекления</option>
+            <option>Малярные и отделочные работы</option>
+            <option>Спил и обрезка деревьев</option>
+            <option>Другое</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="comment">Комментарий</label>
+          <textarea id="comment" name="comment" placeholder="Опишите задачу, адрес объекта, сроки..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">🚀 Отправить заявку</button>
+        <p class="form-note">Нажимая кнопку, вы соглашаетесь с политикой обработки персональных данных.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="logo" style="margin-bottom:16px">
+          <img src="images/favicon.png" alt="Пром-Альп-Строй" style="height:38px;border-radius:10px;">
+          <span>Пром-Альп-Строй</span>
+        </div>
+        <p>ООО «Пром-Альп-Строй» — промышленный альпинизм в Ижевске и Удмуртии с 2002 года. Высотные работы любой сложности.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Услуги</h4>
+        <a href="#services">Высотные работы</a>
+        <a href="#services">Монтаж оборудования</a>
+        <a href="#services">Подъём грузов</a>
+        <a href="#services">Удаление наледи</a>
+        <a href="#details">Сварочные работы</a>
+        <a href="#details">Герметизация швов</a>
+        <a href="#details">Демонтаж</a>
+        <a href="#details">Баннеры</a>
+      </div>
+      <div class="footer-col">
+        <h4>Компания</h4>
+        <a href="#benefits">О нас</a>
+        <a href="#works">Наши работы</a>
+        <a href="#team">Команда</a>
+        <a href="#reviews">Отзывы</a>
+      </div>
+      <div class="footer-col">
+        <h4>Контакты</h4>
+        <a href="tel:+73412000000">📞 +7 (3412) 00-00-00</a>
+        <a href="tel:+79000000000">📱 +7 (900) 000-00-00</a>
+        <a href="mailto:info@udmpromalp.ru">✉️ info@udmpromalp.ru</a>
+        <p>📍 г. Ижевск, Удмуртская Республика</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2002–2025 ООО «Пром-Альп-Строй». Все права защищены.</span>
+      <span>Промышленный альпинизм в Ижевске</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== FLOATING CALL BUTTON ===== -->
+<a href="tel:+73412000000" class="float-call" aria-label="Позвонить">📞</a>
+
+  <!-- ===== STICKY MOBILE BAR ===== -->
+  <div class="mobile-bar">
+    <a href="tel:+73412000000" class="btn btn-primary">📞 Позвонить</a>
+    <a href="#contact" class="btn btn-ghost">📝 Заявка</a>
+  </div>
+
+  <!-- ===== MODAL LIGHTBOX ===== -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <button class="modal-nav modal-prev" onclick="prevModalImage()">←</button>
+      <button class="modal-nav modal-next" onclick="nextModalImage()">→</button>
+      <img id="modalImage" src="" alt="">
+      <div class="modal-caption" id="modalCaption"></div>
+    </div>
+  </div>
+
+<script>
+  // Mobile menu
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // Reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal,.slide-left,.slide-right,.zoom-in').forEach(el => observer.observe(el));
+
+  // Parallax effect on scroll
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        const scrolled = window.pageYOffset;
+        document.querySelectorAll('.parallax-bg::before').forEach(el => {
+          const rect = el.parentElement.getBoundingClientRect();
+          const speed = 0.3;
+          el.style.transform = `translateY(${scrolled * speed}px)`;
+        });
+        // Also apply to parent elements for better performance
+        document.querySelectorAll('.parallax-bg').forEach(el => {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight && rect.bottom > 0) {
+            const speed = 0.15;
+            const yPos = -(scrolled * speed);
+            el.style.backgroundPositionY = `${yPos * 0.5}px`;
+          }
+        });
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+
+  // Subtle mouse move parallax for hero
+  const hero = document.querySelector('.hero');
+  if (hero) {
+    hero.addEventListener('mousemove', (e) => {
+      const rect = hero.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      const img = hero.querySelector('.hero-visual img');
+      if (img) {
+        img.style.transform = `translateY(${-12 + y * -10}px) scale(1.02) translate(${x * 8}px, ${y * 8}px)`;
+      }
+    });
+    hero.addEventListener('mouseleave', () => {
+      const img = hero.querySelector('.hero-visual img');
+      if (img) {
+        img.style.transform = '';
+      }
+    });
+  }
+
+  // Form submit
+  function handleSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+    const btn = form.querySelector('button[type="submit"]');
+    const original = btn.innerHTML;
+    btn.innerHTML = '⏳ Отправка...';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.innerHTML = '✅ Заявка отправлена!';
+      btn.style.background = 'linear-gradient(135deg,#00c853,#00e676)';
+      btn.style.color = '#fff';
+      setTimeout(() => {
+        form.reset();
+        btn.innerHTML = original;
+        btn.style.background = '';
+        btn.style.color = '';
+        btn.disabled = false;
+      }, 2500);
+    }, 1200);
+    return false;
+  }
+
+  // Smooth scroll offset for sticky header
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        const offset = 80;
+        const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+
+  // ===== MODAL LIGHTBOX =====
+  let modalImages = [];
+  let currentModalIndex = 0;
+
+  // Collect all images for modal
+  function collectModalImages() {
+    modalImages = [];
+    document.querySelectorAll('.gallery-item img, .team-photo-3 img, .review img').forEach((img, index) => {
+      const caption = img.alt || img.parentElement?.querySelector('.caption')?.textContent || '';
+      modalImages.push({
+        src: img.src,
+        alt: caption
+      });
+    });
+  }
+  collectModalImages();
+
+  // Add click handler to all gallery images
+  document.querySelectorAll('.gallery-item img, .team-photo-3 img').forEach(img => {
+    img.style.cursor = 'zoom-in';
+    img.addEventListener('click', function() {
+      openModal(this.src, this.alt || '');
+    });
+  });
+
+  function openModal(src, caption) {
+    const modal = document.getElementById('modalOverlay');
+    const img = document.getElementById('modalImage');
+    const cap = document.getElementById('modalCaption');
+    const index = modalImages.findIndex(m => m.src === src);
+    currentModalIndex = index >= 0 ? index : 0;
+    img.src = src;
+    cap.textContent = caption || '';
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal(e) {
+    if (e && e.target !== e.currentTarget) return;
+    const modal = document.getElementById('modalOverlay');
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function updateModalImage() {
+    const img = document.getElementById('modalImage');
+    const cap = document.getElementById('modalCaption');
+    img.src = modalImages[currentModalIndex].src;
+    cap.textContent = modalImages[currentModalIndex].alt;
+  }
+
+  function prevModalImage() {
+    currentModalIndex = (currentModalIndex - 1 + modalImages.length) % modalImages.length;
+    updateModalImage();
+  }
+
+  function nextModalImage() {
+    currentModalIndex = (currentModalIndex + 1) % modalImages.length;
+    updateModalImage();
+  }
+
+  // Keyboard navigation for modal
+  document.addEventListener('keydown', (e) => {
+    const modal = document.getElementById('modalOverlay');
+    if (!modal.classList.contains('active')) return;
+    if (e.key === 'Escape') closeModal();
+    if (e.key === 'ArrowLeft') prevModalImage();
+    if (e.key === 'ArrowRight') nextModalImage();
+  });
+</script>
+</body>
+</html>

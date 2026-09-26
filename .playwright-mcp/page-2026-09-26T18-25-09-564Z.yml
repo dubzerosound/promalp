@@ -1,0 +1,69 @@
+- generic [ref=f11e2]:
+  - generic [ref=f11e3]:
+    - link "Skip to content" [ref=f11e4] [cursor=pointer]:
+      - /url: "#start-of-content"
+    - banner "Global navigation menu" [ref=f11e8]:
+      - generic [ref=f11e9]:
+        - generic [ref=f11e10]:
+          - button "Open menu" [ref=f11e12] [cursor=pointer]
+          - link "Homepage (g then d)" [ref=f11e15] [cursor=pointer]:
+            - /url: /
+        - generic [ref=f11e18]:
+          - navigation "Breadcrumbs" [ref=f11e19]:
+            - list [ref=f11e20]:
+              - listitem [ref=f11e21]:
+                - generic [ref=f11e22]: New repository
+          - button "Open quick search dialog, type / to search" [ref=f11e26] [cursor=pointer]:
+            - generic [ref=f11e28]:
+              - generic:
+                - text: Type
+                - generic: /
+                - text: to search
+        - generic [ref=f11e29]:
+          - generic [ref=f11e30]:
+            - button "Create new..." [ref=f11e32] [cursor=pointer]
+            - generic [ref=f11e34]:
+              - link "All issues (g then i)" [ref=f11e35] [cursor=pointer]:
+                - /url: /issues
+              - link "All pull requests (g then p)" [ref=f11e39] [cursor=pointer]:
+                - /url: /pulls
+              - link "All repositories" [ref=f11e42] [cursor=pointer]:
+                - /url: /repos
+          - button "Open user navigation menu" [ref=f11e46] [cursor=pointer]:
+            - img "User avatar" [ref=f11e47]
+  - main [ref=f11e50]
+  - contentinfo [ref=f11e52]:
+    - heading "Footer" [level=2] [ref=f11e53]
+    - generic [ref=f11e54]:
+      - generic [ref=f11e55]:
+        - link "GitHub Homepage" [ref=f11e56] [cursor=pointer]:
+          - /url: https://github.com
+        - generic [ref=f11e59]: © 2026 GitHub, Inc.
+      - navigation "Footer" [ref=f11e60]:
+        - heading "Footer navigation" [level=3] [ref=f11e61]
+        - list "Footer navigation" [ref=f11e62]:
+          - listitem [ref=f11e63]:
+            - link "Terms" [ref=f11e64] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/github-terms/github-terms-of-service
+          - listitem [ref=f11e65]:
+            - link "Privacy" [ref=f11e66] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/privacy-policies/github-privacy-statement
+          - listitem [ref=f11e67]:
+            - link "Security" [ref=f11e68] [cursor=pointer]:
+              - /url: https://github.com/security
+          - listitem [ref=f11e69]:
+            - link "Status" [ref=f11e70] [cursor=pointer]:
+              - /url: https://www.githubstatus.com/
+          - listitem [ref=f11e71]:
+            - link "Community" [ref=f11e72] [cursor=pointer]:
+              - /url: https://github.community/
+          - listitem [ref=f11e73]:
+            - link "Docs" [ref=f11e74] [cursor=pointer]:
+              - /url: https://docs.github.com/
+          - listitem [ref=f11e75]:
+            - link "Contact" [ref=f11e76] [cursor=pointer]:
+              - /url: https://support.github.com?tags=dotcom-footer
+          - listitem [ref=f11e77]:
+            - button "Manage cookies" [ref=f11e79] [cursor=pointer]
+          - listitem [ref=f11e80]:
+            - button "Do not share my personal information" [ref=f11e82] [cursor=pointer]
