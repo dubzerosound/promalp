@@ -87,19 +87,20 @@
     background:rgba(11,18,32,.85);backdrop-filter:blur(14px);
     border-bottom:1px solid var(--line);
   }
-  .nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px 0}
-  .logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:18px;letter-spacing:-.02em}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:40px;padding:12px 0}
+  .logo{display:flex;align-items:center;gap:8px;font-weight:900;font-size:15px;letter-spacing:-.02em;flex-shrink:0}
   .logo-mark{
-    width:38px;height:38px;border-radius:10px;
+    width:32px;height:32px;border-radius:8px;
     background:linear-gradient(135deg,var(--accent),var(--accent-2));
-    display:grid;place-items:center;color:#111;font-size:20px;font-weight:900;
+    display:grid;place-items:center;color:#111;font-size:18px;font-weight:900;
   }
-  .nav-links{display:flex;gap:26px;font-size:15px;color:var(--muted)}
+  .nav-links{display:flex;gap:20px;font-size:14px;color:var(--muted);flex-shrink:0}
   .nav-links a:hover{color:var(--accent)}
   .nav-phone{
     display:flex;align-items:center;gap:8px;font-weight:800;font-size:16px;
     color:var(--accent);padding:8px 14px;border-radius:999px;
     border:1px solid rgba(255,107,0,.35);
+    white-space:nowrap;
   }
   .nav-phone:hover{background:rgba(255,107,0,.1)}
   .burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
@@ -107,7 +108,7 @@
 
   /* MOBILE MENU */
   .mobile-menu{
-    display:none;flex-direction:column;gap:6px;padding:16px 20px 22px;
+    display:none;flex-direction:column;gap:6px;padding:16px 24px 22px;
     border-top:1px solid var(--line);background:var(--bg-soft);
   }
   .mobile-menu.open{display:flex}
@@ -192,8 +193,9 @@
   }
   .service:hover{border-color:rgba(255,107,0,.4);background:#18233f}
   .service-emoji{font-size:26px;flex-shrink:0}
-  .service h4{font-size:16px;font-weight:700;margin-bottom:6px}
-  .service p{font-size:14px;color:var(--muted)}
+  .service-info{min-width:0;flex:1}
+  .service h4{font-size:16px;font-weight:700;margin-bottom:6px;word-break:break-word;overflow-wrap:break-word}
+  .service p{font-size:14px;color:var(--muted);word-break:break-word;overflow-wrap:break-word}
 
   /* GALLERY */
   .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
@@ -395,7 +397,7 @@
     transform:translateZ(0);
   }
   .parallax-2::before{
-    background-image:url('images/hero1.jpg');
+    background-image:url('images/hero/hero1.jpg');
     transform:translateZ(0);
   }
   .parallax-bg > *{position:relative;z-index:1}
@@ -421,10 +423,11 @@
   }
 
   /* TEAM 3-COLUMN GRID */
-  .team-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1000px;margin:0 auto}
+  .team-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1000px;margin:0 auto;justify-content:center}
   .team-card-3{
     background:var(--card);border:1px solid var(--line);border-radius:16px;
     padding:20px;text-align:center;transition:.3s;
+    display:flex;flex-direction:column;align-items:center;
   }
   .team-card-3:hover{
     transform:translateY(-8px);
@@ -432,7 +435,7 @@
     box-shadow:0 20px 50px rgba(255,107,0,.2);
   }
   .team-photo-3{
-    width:100%;aspect-ratio:3/4;border-radius:12px;overflow:hidden;
+    width:100%;aspect-ratio:1/1;border-radius:12px;overflow:hidden;
     margin-bottom:16px;cursor:zoom-in;transition:.3s;
   }
   .team-photo-3 img{
@@ -444,16 +447,6 @@
   }
   .team-card-3 h4{font-size:17px;font-weight:800;margin-bottom:8px}
   .team-card-3 p{font-size:14px;color:var(--muted);line-height:1.5}
-  /* Center last row when 5 items (3+2) */
-  .team-grid-3{
-    justify-items:center;
-  }
-  .team-grid-3 .team-card-3:nth-child(4){
-    grid-column:1/2;
-  }
-  .team-grid-3 .team-card-3:nth-child(5){
-    grid-column:2/3;
-  }
 
   /* MODAL LIGHTBOX */
   .modal-overlay{
@@ -562,6 +555,7 @@
     .nav-links{display:none}
     .nav-phone{display:none}
     .burger{display:flex}
+    .nav{gap:16px;padding:10px 0}
   }
   @media(max-width:600px){
     .section{padding:60px 0}
@@ -580,13 +574,89 @@
     }
     .mobile-bar .btn{padding:12px;font-size:15px;justify-content:center}
     body{padding-bottom:76px}
+    .container{padding:0 20px}
+    .cta{padding:24px}
+    .card{padding:24px}
+    .step{padding:28px 20px}
+    .partner-info{padding:20px}
+    .team-card-3{padding:16px}
+    .logo{font-size:14px}
+    .logo img{height:28px}
+    .logo-mark{width:28px;height:28px;font-size:16px}
+    .badge{font-size:11px;padding:6px 12px;margin-bottom:16px}
+    .hero h1{font-size:clamp(26px,7vw,36px)}
+    .hero p{font-size:15px}
+    .hero-actions{flex-direction:column}
+    .hero-actions .btn{width:100%;justify-content:center}
+    .nav{gap:12px;padding:8px 0}
   }
+
+  /* PARTNERS TASKS SECTION */
+  .partners-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:28px}
+  .partner-card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    overflow:hidden;transition:.35s;
+  }
+  .partner-card:hover{
+    transform:translateY(-8px);border-color:rgba(255,107,0,.5);
+    box-shadow:0 24px 60px rgba(255,107,0,.2);
+  }
+  .partner-gallery{
+    position:relative;aspect-ratio:16/10;overflow:hidden;
+    background:linear-gradient(160deg,#1b2745,#0e1628);
+  }
+  .partner-gallery img{
+    width:100%;height:100%;object-fit:cover;
+    transition:transform .6s cubic-bezier(.25,.46,.45,.94);
+  }
+  .partner-card:hover .partner-gallery img{transform:scale(1.08)}
+  .partner-gallery-nav{
+    position:absolute;top:50%;transform:translateY(-50%);
+    background:rgba(0,0,0,.6);border:none;color:#fff;
+    width:40px;height:40px;border-radius:50%;cursor:pointer;
+    font-size:18px;transition:.3s;display:grid;place-items:center;
+    opacity:0;transition:opacity .3s;
+  }
+  .partner-card:hover .partner-gallery-nav{opacity:1}
+  .partner-gallery-nav:hover{background:var(--accent);color:#111}
+  .partner-gallery-prev{left:12px}
+  .partner-gallery-next{right:12px}
+  .partner-gallery-counter{
+    position:absolute;bottom:12px;right:12px;
+    background:rgba(0,0,0,.7);color:#fff;
+    padding:6px 12px;border-radius:20px;font-size:13px;font-weight:600;
+  }
+  .partner-info{padding:24px}
+  .partner-client{
+    display:inline-block;background:rgba(255,107,0,.12);color:var(--accent);
+    padding:6px 14px;border-radius:20px;font-size:13px;font-weight:700;
+    margin-bottom:14px;
+  }
+  .partner-info h3{
+    font-size:18px;font-weight:800;margin-bottom:12px;line-height:1.3;
+  }
+  .partner-info p{color:var(--muted);font-size:15px;line-height:1.6}
+  .partner-photos{
+    display:flex;gap:8px;margin-top:16px;overflow-x:auto;
+    padding-bottom:8px;
+  }
+  .partner-thumb{
+    width:64px;height:48px;border-radius:8px;overflow:hidden;
+    cursor:pointer;opacity:.6;transition:.3s;flex-shrink:0;
+    border:2px solid transparent;
+  }
+  .partner-thumb:hover,.partner-thumb.active{opacity:1;border-color:var(--accent)}
+  .partner-thumb img{width:100%;height:100%;object-fit:cover}
 
   /* MODAL RESPONSIVE */
   @media(max-width:768px){
     .modal-prev{left:10px}
     .modal-next{right:10px}
     .modal-close{top:10px;right:10px}
+  }
+  @media(max-width:600px){
+    .partners-grid{grid-template-columns:1fr}
+    .partner-thumb{width:50px;height:38px}
   }
 </style>
 </head>
@@ -596,13 +666,14 @@
 <header>
   <div class="container nav">
     <a href="#" class="logo">
-      <img src="images/favicon.png" alt="Пром-Альп-Строй" style="height:38px;border-radius:10px;">
+      <img src="images/favicon.png" alt="Пром-Альп-Строй" style="height:32px;border-radius:8px;">
       <span>Пром-Альп-Строй</span>
     </a>
     <nav class="nav-links">
       <a href="#benefits">Почему мы</a>
       <a href="#services">Услуги</a>
       <a href="#works">Работы</a>
+      <a href="#partners">Партнёры</a>
       <a href="#details">Подробнее</a>
       <a href="#team">Команда</a>
       <a href="#certificates">Сертификаты</a>
@@ -610,8 +681,8 @@
       <a href="#faq">FAQ</a>
       <a href="#contact">Контакты</a>
     </nav>
-    <a href="tel:+73412000000" class="nav-phone">
-      📞 +7 (3412) 00-00-00
+    <a href="tel:+79226810770" class="nav-phone">
+      📞 +7 (922) 681-07-70
     </a>
     <button class="burger" id="burger" aria-label="Меню">
       <span></span><span></span><span></span>
@@ -621,13 +692,14 @@
     <a href="#benefits">Почему мы</a>
     <a href="#services">Услуги</a>
     <a href="#works">Работы</a>
+    <a href="#partners">Партнёры</a>
     <a href="#details">Подробнее</a>
     <a href="#team">Команда</a>
     <a href="#certificates">Сертификаты</a>
     <a href="#reviews">Отзывы</a>
     <a href="#faq">FAQ</a>
     <a href="#contact">Контакты</a>
-    <a href="tel:+73412000000" style="color:var(--accent);font-weight:800;">📞 +7 (3412) 00-00-00</a>
+    <a href="tel:+79226810770" style="color:var(--accent);font-weight:800;">📞 +7 (922) 681-07-70</a>
   </div>
 </header>
 
@@ -638,10 +710,10 @@
       <div class="badge">🏔 20 лет на высоте · Ижевск и Удмуртия</div>
       <h1>Промышленный альпинизм <span class="accent">любой сложности</span></h1>
       <p>Высотные работы на строительных сооружениях в безопорном пространстве. Сертифицированная команда, мастера спорта, выезд на объект и смета — уже на следующий день после обращения.</p>
-      <div class="hero-actions">
-        <a href="#contact" class="btn btn-primary">📝 Оставить заявку</a>
-        <a href="tel:+73412000000" class="btn btn-ghost">📞 Позвонить сейчас</a>
-      </div>
+        <div class="hero-actions">
+          <a href="tel:+79226810770" class="btn btn-primary">📞 Позвонить сейчас</a>
+          <a href="#contact" class="btn btn-ghost">📍 Контакты</a>
+        </div>
       <div class="hero-stats">
         <div class="hero-stat"><b>20</b><span>лет опыта</span></div>
         <div class="hero-stat"><b>6+</b><span>лет опыта у каждого альпиниста</span></div>
@@ -650,7 +722,7 @@
       </div>
     </div>
     <div class="hero-visual">
-      <img src="images/hero1.jpg" alt="Промышленный альпинист за работой">
+      <img src="images/hero/hero1.jpg" alt="Промышленный альпинист за работой">
     </div>
   </div>
 </section>
@@ -724,7 +796,7 @@
       </div>
       <div class="service reveal">
         <div class="service-emoji">📡</div>
-        <div><h4>Монтаж телекоммуникационного оборудования</h4><p>Установка антенн, вышек, монтаж на телевышках. Установка и крепление баннеров, фальшфасадов, водосточных и воздуховодных систем.</p></div>
+        <div class="service-info"><h4>Монтаж телекоммуникационного оборудования</h4><p>Установка антенн, вышек, монтаж на телевышках. Установка и крепление баннеров, фальшфасадов, водосточных и воздуховодных систем.</p></div>
       </div>
       <div class="service reveal">
         <div class="service-emoji">📦</div>
@@ -800,14 +872,120 @@
     <h2 class="section-title">Примеры <span class="accent">работ</span></h2>
     <p class="section-sub">Работы, выполненные компанией ООО «Пром-Альп-Строй».</p>
     <div class="gallery-grid">
-      <div class="gallery-item reveal"><img src="images/service1.jpg" alt="Высотные работы"><div class="caption">Высотные работы</div></div>
-      <div class="gallery-item reveal"><img src="images/service5.jpg" alt="Монтаж оборудования"><div class="caption">Монтаж оборудования</div></div>
-      <div class="gallery-item reveal"><img src="images/service4.jpg" alt="Ремонт фасада"><div class="caption">Ремонт фасада</div></div>
-      <div class="gallery-item reveal"><img src="images/service3.jpg" alt="Мойка остекления"><div class="caption">Мойка остекления</div></div>
-      <div class="gallery-item reveal"><img src="images/service2.jpg" alt="Удаление наледи"><div class="caption">Удаление наледи</div></div>
-      <div class="gallery-item reveal"><img src="images/service6.jpg" alt="Подъём груза"><div class="caption">Подъём груза</div></div>
-      <div class="gallery-item reveal"><img src="images/hero3.jpg" alt="Отделочные работы"><div class="caption">Отделочные работы</div></div>
-      <div class="gallery-item reveal"><img src="images/hero2.jpg" alt="Спил деревьев"><div class="caption">Спил деревьев</div></div>
+      <div class="gallery-item reveal"><img src="images/service/service1.jpg" alt="Высотные работы"><div class="caption">Высотные работы</div></div>
+      <div class="gallery-item reveal"><img src="images/service/service5.jpg" alt="Монтаж оборудования"><div class="caption">Монтаж оборудования</div></div>
+      <div class="gallery-item reveal"><img src="images/service/service4.jpg" alt="Ремонт фасада"><div class="caption">Ремонт фасада</div></div>
+      <div class="gallery-item reveal"><img src="images/service/service3.jpg" alt="Мойка остекления"><div class="caption">Мойка остекления</div></div>
+      <div class="gallery-item reveal"><img src="images/service/service2.jpg" alt="Удаление наледи"><div class="caption">Удаление наледи</div></div>
+      <div class="gallery-item reveal"><img src="images/service/service6.jpg" alt="Подъём груза"><div class="caption">Подъём груза</div></div>
+      <div class="gallery-item reveal"><img src="images/hero/hero3.jpg" alt="Отделочные работы"><div class="caption">Отделочные работы</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PARTNERS TASKS ===== -->
+<section class="section" id="partners">
+  <div class="container">
+    <h2 class="section-title">Задачи, с которыми обратились наши <span class="accent">партнёры</span></h2>
+    <p class="section-sub">Реальные проекты, выполненные для ведущих предприятий Удмуртии и России. Каждый объект — это доверие и результат.</p>
+    <div class="partners-grid">
+      
+      <!-- Card 1: Gas Pipeline -->
+      <div class="partner-card reveal">
+        <div class="partner-gallery">
+          <img src="images/gas-pipeline/gas-pipeline-udmpromalp-79226810770-001.jpg" alt="Монтаж газопровода" class="partner-main-img">
+          <button class="partner-gallery-nav partner-gallery-prev" onclick="prevPartnerImage(0)">←</button>
+          <button class="partner-gallery-nav partner-gallery-next" onclick="nextPartnerImage(0)">→</button>
+          <div class="partner-gallery-counter">1/17</div>
+        </div>
+        <div class="partner-info">
+          <span class="partner-client">ИМЗ Байкал, ПАО Ижсталь</span>
+          <h3>Монтаж газопровода на МКД для кровельных котельных</h3>
+          <p>Монтаж газопровода на многоквартирных домах для кровельных котельных. Ремонт труб и газоходов на промышленных предприятиях. Обследование дымовых труб и промышленных сооружений.</p>
+          <div class="partner-photos"></div>
+        </div>
+      </div>
+
+      <!-- Card 2: Dust Cleaning -->
+      <div class="partner-card reveal">
+        <div class="partner-gallery">
+          <img src="images/dust-cleaning/dust-cleaning-udmpromalp-79226810770-001.jpg" alt="Обеспыливание" class="partner-main-img">
+          <button class="partner-gallery-nav partner-gallery-prev" onclick="prevPartnerImage(1)">←</button>
+          <button class="partner-gallery-nav partner-gallery-next" onclick="nextPartnerImage(1)">→</button>
+          <div class="partner-gallery-counter">1/5</div>
+        </div>
+        <div class="partner-info">
+          <span class="partner-client">Ижнефтемаш, Концерн Калашников</span>
+          <h3>Обеспыливание и очистка промышленных помещений</h3>
+          <p>Обеспыливание и очистка от отложений промышленных помещений. Профессиональная уборка производственных площадок и цехов на крупных предприятиях.</p>
+          <div class="partner-photos"></div>
+        </div>
+      </div>
+
+      <!-- Card 3: Snow Cleaning -->
+      <div class="partner-card reveal">
+        <div class="partner-gallery">
+          <img src="images/snow-cleaning/snow-cleaning-udmpromalp-79226810770-001.jpg" alt="Очистка от снега" class="partner-main-img">
+          <button class="partner-gallery-nav partner-gallery-prev" onclick="prevPartnerImage(2)">←</button>
+          <button class="partner-gallery-nav partner-gallery-next" onclick="nextPartnerImage(2)">→</button>
+          <div class="partner-gallery-counter">1/7</div>
+        </div>
+        <div class="partner-info">
+          <span class="partner-client">Концерн Калашников</span>
+          <h3>Очистка от снега и наледи промышленных площадок</h3>
+          <p>Очистка от снега и наледи промышленных площадок и цехов. Зимнее обслуживание промышленных объектов, обеспечение безопасности производства.</p>
+          <div class="partner-photos"></div>
+        </div>
+      </div>
+
+      <!-- Card 4: Sealing Repair -->
+      <div class="partner-card reveal">
+        <div class="partner-gallery">
+          <img src="images/sealing-repair/sealing-repair-udmpromalp-79226810770-001.jpg" alt="Ремонт примыканий" class="partner-main-img">
+          <button class="partner-gallery-nav partner-gallery-prev" onclick="prevPartnerImage(3)">←</button>
+          <button class="partner-gallery-nav partner-gallery-next" onclick="nextPartnerImage(3)">→</button>
+          <div class="partner-gallery-counter">1/5</div>
+        </div>
+        <div class="partner-info">
+          <span class="partner-client">Увадрев</span>
+          <h3>Ремонт примыканий и утепление теплотрасс</h3>
+          <p>Ремонт примыканий, утепление теплотрасс, герметизация стыков и примыканий строительных элементов. Комплексное обслуживание инженерных коммуникаций.</p>
+          <div class="partner-photos"></div>
+        </div>
+      </div>
+
+      <!-- Card 5: BPLA Protection -->
+      <div class="partner-card reveal">
+        <div class="partner-gallery">
+          <img src="images/bpla-protection/bpla-protection-udmpromalp-79226810770-001.jpg" alt="Защита от БПЛА" class="partner-main-img">
+          <button class="partner-gallery-nav partner-gallery-prev" onclick="prevPartnerImage(4)">←</button>
+          <button class="partner-gallery-nav partner-gallery-next" onclick="nextPartnerImage(4)">→</button>
+          <div class="partner-gallery-counter">1/4</div>
+        </div>
+        <div class="partner-info">
+          <span class="partner-client">Белкамнефть</span>
+          <h3>Устройство защитных сооружений от БПЛА</h3>
+          <p>Устройство защитных сооружений от БПЛА на промышленных сооружениях. Установка противодронных систем защиты на объектах нефтедобычи.</p>
+          <div class="partner-photos"></div>
+        </div>
+      </div>
+
+      <!-- Card 6: Chimney Demolition -->
+      <div class="partner-card reveal">
+        <div class="partner-gallery">
+          <img src="images/chimney-demolition/chimney-demolition-udmpromalp-79226810770-001.jpg" alt="Демонтаж труб" class="partner-main-img">
+          <button class="partner-gallery-nav partner-gallery-prev" onclick="prevPartnerImage(5)">←</button>
+          <button class="partner-gallery-nav partner-gallery-next" onclick="nextPartnerImage(5)">→</button>
+          <div class="partner-gallery-counter">1/3</div>
+        </div>
+        <div class="partner-info">
+          <span class="partner-client">Увадрев, РТРС, Башнефть, ИОМЗ, ПАО Ижсталь</span>
+          <h3>Демонтаж труб, ремонт антенн, ремонт потолков</h3>
+          <p>Демонтаж дымовой трубы. Ремонт передающих антенн на телевышках. Устройство защитных противодронных сооружений. Ремонт дымовых труб и потолков промышленных зданий.</p>
+          <div class="partner-photos"></div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -820,35 +998,35 @@
     <div class="team-grid-3">
       <div class="team-card-3 reveal">
         <div class="team-photo-3">
-          <img src="images/team_alpin11.jpg" alt="Мастер спорта" onclick="openModal(this.src, 'Мастер спорта — руководитель проектов')">
+          <img src="images/team/team_alpin11.jpg" alt="Мастер спорта" onclick="openModal(this.src, 'Мастер спорта — руководитель проектов')">
         </div>
         <h4>Мастер спорта</h4>
         <p>Опыт работы более 15 лет. Руководитель высотных проектов.</p>
       </div>
       <div class="team-card-3 reveal">
         <div class="team-photo-3">
-          <img src="images/team_alpin22.jpg" alt="Мастер спорта" onclick="openModal(this.src, 'Мастер спорта — монтаж')">
+          <img src="images/team/team_alpin22.jpg" alt="Мастер спорта" onclick="openModal(this.src, 'Мастер спорта — монтаж')">
         </div>
         <h4>Мастер спорта</h4>
         <p>Специалист по сложным монтажным работам на высоте.</p>
       </div>
       <div class="team-card-3 reveal">
         <div class="team-photo-3">
-          <img src="images/team_alpin33.jpg" alt="КМС" onclick="openModal(this.src, 'КМС — фасадные работы')">
+          <img src="images/team/team_alpin33.jpg" alt="КМС" onclick="openModal(this.src, 'КМС — фасадные работы')">
         </div>
         <h4>КМС</h4>
         <p>Опыт работы более 10 лет. Специалист по фасадным работам.</p>
       </div>
       <div class="team-card-3 reveal">
         <div class="team-photo-3">
-          <img src="images/team_alpin44.jpg" alt="КМС" onclick="openModal(this.src, 'КМС — промышленный альпинизм')">
+          <img src="images/team/team_alpin44.jpg" alt="КМС" onclick="openModal(this.src, 'КМС — промышленный альпинизм')">
         </div>
         <h4>КМС</h4>
         <p>Опыт работы более 8 лет. Специалист по промышленному альпинизму.</p>
       </div>
       <div class="team-card-3 reveal">
         <div class="team-photo-3">
-          <img src="images/team_alpin66.jpg" alt="КМС" onclick="openModal(this.src, 'КМС — высотные работы')">
+          <img src="images/team/team_alpin66.jpg" alt="КМС" onclick="openModal(this.src, 'КМС — высотные работы')">
         </div>
         <h4>КМС</h4>
         <p>Опыт работы более 6 лет. Специалист по высотным работам.</p>
@@ -864,19 +1042,23 @@
     <p class="section-sub">Наши клиенты высоко оценивают качество работы. Подтверждение нашей квалификации — сертификаты и благодарственные письма от партнёров.</p>
     <div class="gallery-grid">
       <div class="gallery-item reveal">
-        <img src="images/cert1.jpg" alt="Благодарственное письмо 1">
+        <img src="images/cert/cert1.jpg" alt="Благодарственное письмо 1">
         <div class="caption">Благодарственное письмо</div>
       </div>
       <div class="gallery-item reveal">
-        <img src="images/cert2.jpg" alt="Благодарственное письмо 2">
+        <img src="images/cert/cert2.jpg" alt="Благодарственное письмо 2">
         <div class="caption">Благодарственное письмо</div>
       </div>
       <div class="gallery-item reveal">
-        <img src="images/cert3.jpg" alt="Благодарственное письмо 3">
+        <img src="images/cert/cert3.jpg" alt="Благодарственное письмо 3">
         <div class="caption">Благодарственное письмо</div>
       </div>
       <div class="gallery-item reveal">
-        <img src="images/cert4.jpg" alt="Благодарственное письмо 4">
+        <img src="images/cert/cert4.jpg" alt="Благодарственное письмо 4">
+        <div class="caption">Благодарственное письмо</div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="images/cert/cert5.jpg" alt="Благодарственное письмо Удмуртнефть">
         <div class="caption">Благодарственное письмо</div>
       </div>
     </div>
@@ -947,53 +1129,31 @@
   </div>
 </section>
 
-<!-- ===== CTA / FORM ===== -->
+<!-- ===== CTA / CONTACT ===== -->
 <section class="section" id="contact">
   <div class="container">
     <div class="cta">
       <div>
-        <h2>Оставьте заявку — <span class="accent">рассчитаем стоимость</span> уже сегодня</h2>
-        <p>Заполните форму, и мы свяжемся с вами в течение 15 минут. Или позвоните нам напрямую — ответим на все вопросы и выедем на объект.</p>
+        <h2>Позвоните — <span class="accent">расскажем стоимость</span> уже сегодня</h2>
+        <p>Свяжитесь с нами любым способом — ответим на все вопросы, выедем на объект и составим смету.</p>
         <div class="cta-contacts">
-          <div class="cta-contact">📞 <a href="tel:+73412000000">+7 (3412) 00-00-00</a></div>
-          <div class="cta-contact">📱 <a href="tel:+79000000000">+7 (900) 000-00-00</a></div>
-          <div class="cta-contact">✉️ <a href="mailto:info@udmpromalp.ru">info@udmpromalp.ru</a></div>
-          <div class="cta-contact">📍 <span>г. Ижевск, Удмуртская Республика</span></div>
+          <div class="cta-contact">📞 <a href="tel:+79226810770">+7 (922) 681-07-70</a></div>
+          <div class="cta-contact">📱 <a href="tel:+73412970170">+7 (3412) 97-01-70</a></div>
+          <div class="cta-contact">✉️ <a href="mailto:pasizh@mail.ru">pasizh@mail.ru</a></div>
+          <div class="cta-contact">📍 <span>426004, г.Ижевск, ул.Воровского, 172-7</span></div>
         </div>
       </div>
-      <form class="form" id="leadForm" onsubmit="return handleSubmit(event)">
-        <h3>Заявка на расчёт</h3>
-        <p class="form-sub">Оставьте контакты — перезвоним в течение 15 минут</p>
-        <div class="field">
-          <label for="name">Ваше имя *</label>
-          <input type="text" id="name" name="name" required placeholder="Иван Иванович">
-        </div>
-        <div class="field">
-          <label for="phone">Телефон *</label>
-          <input type="tel" id="phone" name="phone" required placeholder="+7 (___) ___-__-__">
-        </div>
-        <div class="field">
-          <label for="service">Услуга</label>
-          <select id="service" name="service">
-            <option value="">Выберите услугу</option>
-            <option>Высотные работы на фасадах</option>
-            <option>Монтаж телекоммуникационного оборудования</option>
-            <option>Подъём грузов на высоту</option>
-            <option>Удаление снега и наледи</option>
-            <option>Ремонт и обслуживание кровли</option>
-            <option>Мойка окон и остекления</option>
-            <option>Малярные и отделочные работы</option>
-            <option>Спил и обрезка деревьев</option>
-            <option>Другое</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="comment">Комментарий</label>
-          <textarea id="comment" name="comment" placeholder="Опишите задачу, адрес объекта, сроки..."></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">🚀 Отправить заявку</button>
-        <p class="form-note">Нажимая кнопку, вы соглашаетесь с политикой обработки персональных данных.</p>
-      </form>
+      <div class="form" style="display:flex;flex-direction:column;justify-content:center;align-items:center;gap:20px;text-align:center;">
+        <div style="font-size:48px;margin-bottom:10px;">📞</div>
+        <h3 style="font-size:22px;">Готовы позвонить?</h3>
+        <p class="form-sub" style="margin-bottom:0;">Нажмите на номер — и мы ответим</p>
+        <a href="tel:+79226810770" class="btn btn-primary" style="font-size:18px;padding:16px 32px;">
+          📞 +7 (922) 681-07-70
+        </a>
+        <a href="tel:+73412970170" class="btn btn-ghost" style="font-size:16px;padding:14px 28px;">
+          📱 +7 (3412) 97-01-70
+        </a>
+      </div>
     </div>
   </div>
 </section>
@@ -1004,7 +1164,7 @@
     <div class="footer-grid">
       <div class="footer-col">
         <div class="logo" style="margin-bottom:16px">
-          <img src="images/favicon.png" alt="Пром-Альп-Строй" style="height:38px;border-radius:10px;">
+      <img src="images/favicon.png" alt="Пром-Альп-Строй" style="height:32px;border-radius:8px;">
           <span>Пром-Альп-Строй</span>
         </div>
         <p>ООО «Пром-Альп-Строй» — промышленный альпинизм в Ижевске и Удмуртии с 2002 года. Высотные работы любой сложности.</p>
@@ -1024,15 +1184,16 @@
         <h4>Компания</h4>
         <a href="#benefits">О нас</a>
         <a href="#works">Наши работы</a>
+        <a href="#partners">Партнёры</a>
         <a href="#team">Команда</a>
         <a href="#reviews">Отзывы</a>
       </div>
       <div class="footer-col">
         <h4>Контакты</h4>
-        <a href="tel:+73412000000">📞 +7 (3412) 00-00-00</a>
-        <a href="tel:+79000000000">📱 +7 (900) 000-00-00</a>
-        <a href="mailto:info@udmpromalp.ru">✉️ info@udmpromalp.ru</a>
-        <p>📍 г. Ижевск, Удмуртская Республика</p>
+        <a href="tel:+79226810770">📞 +7 (922) 681-07-70</a>
+        <a href="tel:+73412970170">📱 +7 (3412) 97-01-70</a>
+        <a href="mailto:pasizh@mail.ru">✉️ pasizh@mail.ru</a>
+        <p>📍 426004, г.Ижевск, ул.Воровского, 172-7</p>
       </div>
     </div>
     <div class="footer-bottom">
@@ -1043,12 +1204,12 @@
 </footer>
 
 <!-- ===== FLOATING CALL BUTTON ===== -->
-<a href="tel:+73412000000" class="float-call" aria-label="Позвонить">📞</a>
+<a href="tel:+79226810770" class="float-call" aria-label="Позвонить">📞</a>
 
   <!-- ===== STICKY MOBILE BAR ===== -->
   <div class="mobile-bar">
-    <a href="tel:+73412000000" class="btn btn-primary">📞 Позвонить</a>
-    <a href="#contact" class="btn btn-ghost">📝 Заявка</a>
+    <a href="tel:+79226810770" class="btn btn-primary">📞 Позвонить</a>
+    <a href="tel:+73412970170" class="btn btn-ghost">📱 Мобильный</a>
   </div>
 
   <!-- ===== MODAL LIGHTBOX ===== -->
@@ -1064,13 +1225,17 @@
 
 <script>
   // Mobile menu
-  const burger = document.getElementById('burger');
-  const mobileMenu = document.getElementById('mobileMenu');
-  burger.addEventListener('click', () => {
-    mobileMenu.classList.toggle('open');
-  });
-  mobileMenu.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  document.addEventListener('DOMContentLoaded', () => {
+    const burger = document.getElementById('burger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (burger && mobileMenu) {
+      burger.addEventListener('click', () => {
+        mobileMenu.classList.toggle('open');
+      });
+      mobileMenu.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => mobileMenu.classList.remove('open'));
+      });
+    }
   });
 
   // FAQ accordion
@@ -1192,6 +1357,107 @@
     });
   }
   collectModalImages();
+
+  // ===== PARTNER GALLERY NAVIGATION =====
+  const partnerGalleries = [
+    ['gas-pipeline/gas-pipeline-udmpromalp-79226810770-001.jpg',
+     'gas-pipeline/gas-pipeline-udmpromalp-79226810770-002.jpg',
+     'gas-pipeline/gas-pipeline-udmpromalp-79226810770-003.jpg',
+     'gas-pipeline/gas-pipeline-udmpromalp-79226810770-004.jpg',
+     'gas-pipeline/gas-pipeline-udmpromalp-79226810770-005.jpg',
+     'gas-pipeline/gas-pipeline-udmpromalp-79226810770-006.jpg',
+     'gas-pipeline/gas-pipeline-udmpromalp-79226810770-007.jpg',
+     'gas-pipeline/gas-pipeline-udmpromalp-79226810770-008.jpg',
+     'gas-pipeline/gas-pipeline-udmpromalp-79226810770-009.jpg',
+     'gas-pipeline/gas-pipeline-udmpromalp-79226810770-010.jpg',
+     'gas-pipeline/gas-pipeline-udmpromalp-79226810770-011.jpg',
+     'gas-pipeline/gas-pipeline-udmpromalp-79226810770-012.jpg',
+     'gas-pipeline/gas-pipeline-udmpromalp-79226810770-013.jpg',
+     'gas-pipeline/gas-pipeline-udmpromalp-79226810770-014.jpg',
+     'gas-pipeline/gas-pipeline-udmpromalp-79226810770-015.jpg',
+     'gas-pipeline/gas-pipeline-udmpromalp-79226810770-016.jpg',
+     'gas-pipeline/gas-pipeline-udmpromalp-79226810770-017.jpg'],
+    ['dust-cleaning/dust-cleaning-udmpromalp-79226810770-001.jpg',
+     'dust-cleaning/dust-cleaning-udmpromalp-79226810770-002.jpg',
+     'dust-cleaning/dust-cleaning-udmpromalp-79226810770-003.jpg',
+     'dust-cleaning/dust-cleaning-udmpromalp-79226810770-004.jpg',
+     'dust-cleaning/dust-cleaning-udmpromalp-79226810770-005.jpg'],
+    ['snow-cleaning/snow-cleaning-udmpromalp-79226810770-001.jpg',
+     'snow-cleaning/snow-cleaning-udmpromalp-79226810770-002.jpg',
+     'snow-cleaning/snow-cleaning-udmpromalp-79226810770-003.jpg',
+     'snow-cleaning/snow-cleaning-udmpromalp-79226810770-004.jpg',
+     'snow-cleaning/snow-cleaning-udmpromalp-79226810770-005.jpg',
+     'snow-cleaning/snow-cleaning-udmpromalp-79226810770-006.jpg',
+     'snow-cleaning/snow-cleaning-udmpromalp-79226810770-007.jpg'],
+    ['sealing-repair/sealing-repair-udmpromalp-79226810770-001.jpg',
+     'sealing-repair/sealing-repair-udmpromalp-79226810770-002.jpg',
+     'sealing-repair/sealing-repair-udmpromalp-79226810770-003.jpg',
+     'sealing-repair/sealing-repair-udmpromalp-79226810770-004.jpg',
+     'sealing-repair/sealing-repair-udmpromalp-79226810770-005.jpg'],
+     ['bpla-protection/bpla-protection-udmpromalp-79226810770-001.jpg',
+      'bpla-protection/bpla-protection-udmpromalp-79226810770-002.jpg',
+      'bpla-protection/bpla-protection-udmpromalp-79226810770-003.jpg',
+      'bpla-protection/bpla-protection-udmpromalp-79226810770-004.jpg'],
+     ['chimney-demolition/chimney-demolition-udmpromalp-79226810770-001.jpg',
+      'chimney-demolition/chimney-demolition-udmpromalp-79226810770-002.jpg',
+      'chimney-demolition/chimney-demolition-udmpromalp-79226810770-003.jpg']
+   ];
+
+   const partnerCurrentIndices = [0, 0, 0, 0, 0, 0];
+
+  function updatePartnerGallery(index) {
+    const cards = document.querySelectorAll('.partner-card');
+    if (!cards[index]) return;
+    
+    const gallery = cards[index].querySelector('.partner-gallery');
+    const mainImg = gallery.querySelector('.partner-main-img');
+    const counter = gallery.querySelector('.partner-gallery-counter');
+    const thumbsContainer = cards[index].querySelector('.partner-photos');
+    
+    const currentImg = partnerGalleries[index][partnerCurrentIndices[index]];
+    mainImg.src = `images/${currentImg}`;
+    counter.textContent = `${partnerCurrentIndices[index] + 1}/${partnerGalleries[index].length}`;
+    
+    // Update thumbnails
+    const thumbs = thumbsContainer.querySelectorAll('.partner-thumb');
+    thumbs.forEach((thumb, i) => {
+      thumb.classList.toggle('active', i === partnerCurrentIndices[index]);
+    });
+  }
+
+  function nextPartnerImage(index) {
+    partnerCurrentIndices[index] = (partnerCurrentIndices[index] + 1) % partnerGalleries[index].length;
+    updatePartnerGallery(index);
+  }
+
+  function prevPartnerImage(index) {
+    partnerCurrentIndices[index] = (partnerCurrentIndices[index] - 1 + partnerGalleries[index].length) % partnerGalleries[index].length;
+    updatePartnerGallery(index);
+  }
+
+  // Initialize partner galleries with thumbnails
+  document.querySelectorAll('.partner-card').forEach((card, cardIndex) => {
+    const thumbsContainer = card.querySelector('.partner-photos');
+    const images = partnerGalleries[cardIndex];
+    
+    images.forEach((imgSrc, imgIndex) => {
+      const thumb = document.createElement('div');
+      thumb.className = 'partner-thumb' + (imgIndex === 0 ? ' active' : '');
+      thumb.innerHTML = `<img src="images/${imgSrc}" alt="">`;
+      thumb.onclick = function() {
+        partnerCurrentIndices[cardIndex] = imgIndex;
+        updatePartnerGallery(cardIndex);
+      };
+      thumbsContainer.appendChild(thumb);
+    });
+    
+    // Click on main image to open in modal
+    const mainImg = card.querySelector('.partner-main-img');
+    mainImg.style.cursor = 'zoom-in';
+    mainImg.addEventListener('click', function() {
+      openModal(this.src, card.querySelector('h3').textContent);
+    });
+  });
 
   // Add click handler to all gallery images
   document.querySelectorAll('.gallery-item img, .team-photo-3 img').forEach(img => {
